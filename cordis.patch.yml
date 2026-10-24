@@ -1,0 +1,69 @@
+# dsh-remote bundle patch.
+#
+# This bundle is expected to sit after @deepseek-ai/dsh-web-app in
+# dsh.profile.bundles. It pins the desktop listener on loopback; the phone uses
+# the plugin's LAN pairing/proxy. Unlike the multi-account bundle, there are no
+# member accounts, child hosts, or workspace isolation.
+#
+# Scope rule: this patch must not change how the local desktop behaves. Anything
+# that alters the desktop window's own UI belongs to the operator, not to a
+# remote-access plugin.
+
+# The desktop host launches with --port 0; pin one port so the LAN proxy has a
+# stable target. The plugin reads the live port from ctx.webServer.port, so this
+# value only has to be a sane default.
+- id: webserver
+  name: "@deepseek-ai/dsh-host-webserver"
+  config:
+    host: 127.0.0.1
+    port: 52551
+    tls: !!js ctx.webStartup.tls
+    compression: gzip
+    compressionLevel: 1
+    compressionThresholdBytes: 1024
+
+# Keep the desktop window on the loopback DSH URL. The LAN URL is only for
+# the phone pairing/proxy; advertising it here makes the desktop window load
+# the proxy and depend on the plugin being enabled.
+- id: web-runtime
+  name: "@deepseek-ai/dsh-web-app"
+  config:
+    openBrowser: !!js ctx.webStartup.openBrowser
+    printUrl: true
+    publicUrl: !!js >-
+      'http://127.0.0.1:52551/'
+    surfaceContext: true
+
+# The directory-picker composition is deliberately left alone.
+#
+# @deepseek-ai/dsh-host-directory-picker-auto resolves its backend once at boot
+# from ctx.webServer.host, which this patch pins to 127.0.0.1 — so the desktop
+# keeps the native OS dialog it has always used. Pinning the in-app browser
+# backend here instead would also change the local window's "add workspace"
+# flow, which is not this plugin's business.
+#
+# The phone is handled on the client instead: a LAN page swaps
+# uiWorkspace.pickDirectory for the plugin's in-app dialog and lists through
+# /api/remote/browse. The local 127.0.0.1 window never takes that branch.
+
+# Do not add LAN addresses to connection.trustedHosts either: the proxy rewrites
+# Host/Origin to the loopback authority before forwarding, so the trust fence
+# never sees a LAN host, and widening it would only weaken the DNS-rebinding
+# defence on the local listener.
+
+- insert:
+    - id: dsh-remote
+      name: dsh-remote
+      config:
+        listenPort: 3080
+        dshPort: 52551
+        maxDownloadBytes: 536870912
+        maxUploadBytes: 536870912
+        # Optional: set the admin account directly here. The password file
+        # ($DSH_HOME/dsh-remote-auth.json) takes precedence over these values.
+        # username: admin
+        # password: change-me
+        #
+        # Optional: extra hostnames the LAN gate accepts, for a MagicDNS or
+        # mDNS name that is not an IP literal. Ports may be omitted.
+        # allowedHosts: []

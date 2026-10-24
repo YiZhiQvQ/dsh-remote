@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#4D6BFE</color>
+    <color name="accent_dark">#3B55D9</color>
+    <color name="text_primary">#1B1F2A</color>
+    <color name="text_secondary">#5F6673</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="background">#F7F8FA</color>
+    <color name="line">#E4E7EF</color>
+    <color name="online">#22C55E</color>
+    <color name="offline">#C3C8D4</color>
+    <color name="icon_bg">#FFFFFF</color>
+
+    <!-- Material 3 tokens. Keep values-night/colors.xml in sync. -->
+    <color name="on_surface">#1B1F2A</color>
+    <color name="on_surface_variant">#5F6673</color>
+    <color name="surface_variant">#F0F2F7</color>
+    <color name="outline">#C9CEDB</color>
+    <color name="outline_variant">#E4E7EF</color>
+    <color name="primary_container">#E8ECFF</color>
+    <color name="on_primary_container">#1B2A6B</color>
+    <color name="error">#B3261E</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="error_container">#FDECEA</color>
+    <color name="on_error_container">#8C1D18</color>
+
+    <!-- zxing-android-embedded's viewfinder laser; the library default is red. -->
+    <color name="zxing_viewfinder_laser">#4D6BFE</color>
+</resources>

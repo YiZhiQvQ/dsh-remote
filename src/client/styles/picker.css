@@ -1,0 +1,283 @@
+/* The remote directory dialog. Kept out of panel.css because it only mounts
+   on a LAN page, and out of mobile.css because the desktop browser can be
+   narrow too. Colours are DSH theme tokens so the dialog follows light/dark. */
+
+.dshr-picker-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dshr-picker {
+  display: flex;
+  flex-direction: column;
+  width: min(560px, 100%);
+  max-height: min(82vh, 760px);
+  overflow: hidden;
+  background: var(--dsw-alias-bg-layer-1, #151922);
+  color: var(--dsw-alias-label-primary, #f9fafb);
+  border: 1px solid var(--dsw-alias-border-l2, rgba(255, 255, 255, 0.12));
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.dshr-picker-head,
+.dshr-picker-toolbar,
+.dshr-picker-crumbs,
+.dshr-picker-status,
+.dshr-picker-foot {
+  flex: 0 0 auto;
+}
+
+.dshr-picker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 8px;
+}
+
+.dshr-picker-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dshr-picker-close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--dsw-alias-label-secondary, #cfd3d6);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dshr-picker-close:hover {
+  color: var(--dsw-alias-label-primary, #f9fafb);
+  background: var(--dsw-alias-interactive-bg-hover, rgba(255, 255, 255, 0.06));
+}
+
+.dshr-picker-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px 6px;
+}
+
+.dshr-picker-drive,
+.dshr-picker-path {
+  min-width: 0;
+  padding: 6px 8px;
+  color: var(--dsw-alias-label-primary, #f9fafb);
+  background: var(--dsw-alias-bg-base, #0f1115);
+  border: 1px solid var(--dsw-alias-border-l2, rgba(255, 255, 255, 0.12));
+  border-radius: 8px;
+  font: inherit;
+  font-size: 12px;
+}
+
+.dshr-picker-drive {
+  flex: 0 0 auto;
+  max-width: 84px;
+}
+
+.dshr-picker-path {
+  flex: 1 1 auto;
+}
+
+.dshr-picker-crumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  min-height: 28px;
+  padding: 0 16px 8px;
+  overflow-x: auto;
+}
+
+.dshr-picker-crumb {
+  max-width: 180px;
+  padding: 4px 6px;
+  overflow: hidden;
+  color: var(--dsw-alias-label-secondary, #cfd3d6);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.dshr-picker-crumb:hover {
+  color: var(--dsw-alias-label-primary, #f9fafb);
+  background: var(--dsw-alias-interactive-bg-hover, rgba(255, 255, 255, 0.06));
+}
+
+.dshr-picker-crumb-current {
+  color: var(--dsw-alias-label-primary, #f9fafb);
+  font-weight: 600;
+}
+
+.dshr-picker-sep {
+  color: var(--dsw-alias-label-tertiary, #9aa0a6);
+  font-size: 12px;
+}
+
+.dshr-picker-list {
+  flex: 1 1 auto;
+  min-height: 120px;
+  padding: 4px 8px 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.dshr-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  overflow: hidden;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.dshr-picker-row::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 14px;
+  height: 11px;
+  border: 1.5px solid var(--dsw-alias-label-tertiary, #9aa0a6);
+  border-radius: 2px;
+}
+
+.dshr-picker-row:hover {
+  background: var(--dsw-alias-interactive-bg-hover, rgba(255, 255, 255, 0.06));
+}
+
+.dshr-picker-up::before {
+  border-style: dashed;
+}
+
+.dshr-picker-hidden {
+  opacity: 0.55;
+}
+
+.dshr-picker-empty {
+  padding: 28px 12px;
+  color: var(--dsw-alias-label-tertiary, #9aa0a6);
+  text-align: center;
+}
+
+.dshr-picker-status {
+  min-height: 18px;
+  padding: 0 16px 6px;
+  color: var(--dsw-alias-label-tertiary, #9aa0a6);
+  font-size: 12px;
+}
+
+.dshr-picker-error {
+  color: var(--dsw-alias-state-error-primary, #f28b82);
+}
+
+.dshr-picker-foot {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--dsw-alias-border-l2, rgba(255, 255, 255, 0.12));
+}
+
+.dshr-picker-name {
+  flex: 1 1 150px;
+  min-width: 0;
+  padding: 8px 10px;
+  color: var(--dsw-alias-label-primary, #f9fafb);
+  background: var(--dsw-alias-bg-base, #0f1115);
+  border: 1px solid var(--dsw-alias-border-l2, rgba(255, 255, 255, 0.12));
+  border-radius: 8px;
+  font: inherit;
+}
+
+.dshr-picker-name::placeholder {
+  color: var(--dsw-alias-label-tertiary, #9aa0a6);
+}
+
+.dshr-picker-spacer {
+  flex: 1 1 0;
+}
+
+.dshr-picker-button {
+  padding: 8px 12px;
+  color: var(--dsw-alias-label-primary, #f9fafb);
+  background: var(--dsw-alias-bg-layer-2, #1b2029);
+  border: 1px solid var(--dsw-alias-border-l2, rgba(255, 255, 255, 0.12));
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dshr-picker-button:hover {
+  background: var(--dsw-alias-interactive-bg-hover, rgba(255, 255, 255, 0.08));
+}
+
+.dshr-picker-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.dshr-picker-primary {
+  color: var(--dsw-alias-label-primary-foreground, #fff);
+  background: var(--dsw-alias-button-primary-fill, #4d6bfe);
+  border-color: var(--dsw-alias-button-primary-fill, #4d6bfe);
+}
+
+.dshr-picker-primary:hover {
+  background: var(--dsw-alias-button-primary-hover, #3f5ce8);
+}
+
+/* Host-side "open with" launches on the PC. On a LAN page it is a dead end;
+   the download action in the preview header is the remote equivalent. */
+.dshr-remote [data-open-target],
+.dshr-remote [data-open-path-open],
+.dshr-remote [data-open-path-unpreviewable],
+.dshr-remote [data-open-path-more] {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .dshr-picker-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .dshr-picker {
+    width: 100%;
+    max-height: 88vh;
+    border-radius: 14px 14px 0 0;
+    border-bottom: 0;
+  }
+}

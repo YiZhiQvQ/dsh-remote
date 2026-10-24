@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_primary">#F2F4F8</color>
+    <color name="text_secondary">#A8AFBF</color>
+    <color name="surface">#1B1F2A</color>
+    <color name="background">#10131A</color>
+    <color name="line">#2A3040</color>
+    <color name="offline">#4A5163</color>
+
+    <color name="on_surface">#F2F4F8</color>
+    <color name="on_surface_variant">#A8AFBF</color>
+    <color name="surface_variant">#252B38</color>
+    <color name="outline">#3A4152</color>
+    <color name="outline_variant">#2A3040</color>
+    <color name="primary_container">#2A3560</color>
+    <color name="on_primary_container">#DDE3FF</color>
+    <color name="error">#F2B8B5</color>
+    <color name="on_error">#601410</color>
+    <color name="error_container">#4A1F1F</color>
+    <color name="on_error_container">#F9DEDC</color>
+</resources>

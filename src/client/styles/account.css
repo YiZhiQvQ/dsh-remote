@@ -1,0 +1,9 @@
+/* Remote pages: no DeepSeek account sign-in or sign-out.
+ *
+ * The guard sets an inline display:none on each control — that is what survives
+ * a React re-render. This rule is the second handle: it covers the brief moment
+ * between a subtree being inserted and the observer's microtask running, and it
+ * makes the hidden controls inspectable as [data-dshr-acct-hidden].
+ */
+html.dshr-remote .dshr-acct-off,
+html.dshr-remote [data-dshr-acct-hidden]{display:none!important;}
