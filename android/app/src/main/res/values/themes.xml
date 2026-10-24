@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.DshRemote" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorOutlineVariant">@color/outline_variant</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/on_error</item>
+        <item name="colorErrorContainer">@color/error_container</item>
+        <item name="colorOnErrorContainer">@color/on_error_container</item>
+
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/light_system_bars</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">@bool/light_system_bars</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.DshRemote.Dialog</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.DshRemote.Dialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.DshRemote.BottomSheet</item>
+    </style>
+
+    <style name="ThemeOverlay.DshRemote.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.DshRemote.Dialog</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.DshRemote.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.DshRemote.DialogButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.DshRemote.DialogButton</item>
+    </style>
+
+    <style name="ShapeAppearance.DshRemote.Dialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="Widget.DshRemote.DialogButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+    <style name="ThemeOverlay.DshRemote.BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.DshRemote.BottomSheet</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+    </style>
+
+    <style name="Widget.DshRemote.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.DshRemote.Sheet</item>
+        <item name="backgroundTint">@color/surface</item>
+    </style>
+
+    <style name="ShapeAppearance.DshRemote.Sheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>

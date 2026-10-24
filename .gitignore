@@ -1,0 +1,26 @@
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+coverage/
+.dry-run/
+tmp/
+.tmp-*
+.dsh-remote-tmp/
+
+# npm pack output
+dist/
+*.tgz
+
+# Local Gradle home used when ~/.gradle is read-only
+.gradle-home/
+
+# Android build artifacts
+android/.gradle/
+android/app/build/
+android/build/
+# Scratch directories used during local builds
+.publish-git/
+.npm-cache/
+.verify/
+.release-notes.md

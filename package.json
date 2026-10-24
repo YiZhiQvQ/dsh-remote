@@ -1,0 +1,74 @@
+{
+  "name": "dsh-remote",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "Single-admin LAN remote access for the DSH desktop Web GUI, without account isolation.",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "remote",
+    "lan"
+  ],
+  "engines": {
+    "node": ">=22.19.0",
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "host",
+    "locale/*.json",
+    "scripts/set-remote-password.mjs",
+    "scripts/set-remote-password.ps1",
+    "docs/DESIGN.md",
+    "docs/DEPLOYMENT.md",
+    "docs/MOBILE.md",
+    "docs/OPTIMIZATION.md",
+    "docs/images",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "build:check": "node build.mjs --check",
+    "watch": "node build.mjs --watch",
+    "bench": "node bench/proxy.mjs",
+    "test": "node --test",
+    "test:fast": "node --test --test-isolation=none",
+    "typecheck": "tsc --noEmit -p jsconfig.json",
+    "lint": "eslint .",
+    "package": "node scripts/package.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar-documentpreview"
+      ]
+    }
+  },
+  "optionalDependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "esbuild": "^0.28.2",
+    "eslint": "^9.39.4",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The DSH LAN gate is plain HTTP and the host address is not known until the
+  user pairs, so cleartext cannot be scoped to a static domain list. The
+  pairing screen restricts addresses to private ranges; see docs/ANDROID.md.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
