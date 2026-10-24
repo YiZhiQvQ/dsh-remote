@@ -18,13 +18,16 @@ DSH desktop 壳固定监听 `127.0.0.1`，并用启动 token 认证浏览器。�
 
 ## 安装
 
-在 DSH 里用 Plugin Manager 安装本地目录：
+把仓库克隆或解压到任意目录，然后用下面任一方式安装。命令里的 `<本仓库路径>` 换成那个目录的绝对路径。
 
-    plugin_manager install_bundle target=E:\documents\Project\dsh-remote
+**方式一：Plugin Manager**（在 DSH 里）
 
-或用桌面安装包自带的 CLI（不要用全局 npm 里的旧版 dsh）：
+    plugin_manager install_bundle target=<本仓库路径>
 
-    & "%LOCALAPPDATA%\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add E:\documents\Project\dsh-remote
+**方式二：DSH 自带的 CLI**（不要用全局 npm 里的旧版 dsh）
+
+    & "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" `
+        plugin --profile desktop add <本仓库路径>
 
 安装后**必须**确认 profile 的 `package.json` 里：
 
@@ -44,7 +47,7 @@ DSH desktop 壳固定监听 `127.0.0.1`，并用启动 token 认证浏览器。�
 
 面板会提示「当前仍是默认密码」。请运行（不需要管理员）：
 
-    E:\documents\Project\dsh-remote\scripts\set-remote-password.ps1
+    <本仓库路径>\scripts\set-remote-password.ps1
 
 按提示输入用户名和密码（密码隐藏输入），脚本会把 scrypt 哈希写入
 `%USERPROFILE%\.dsh\dsh-remote-auth.json`，然后重启 DSH。
@@ -98,8 +101,8 @@ DSH desktop 壳固定监听 `127.0.0.1`，并用启动 token 认证浏览器。�
 
     npm install
     npm run build        # src/client/** -> client.js
-    npm run build:check  # CI：产物与源码不一致则失败
-    npm test             # 73 个用例
+    npm run build:check  # 产物与源码不一致则失败
+    npm test             # 112 个用例
     npm test:fast        # 受限沙箱下用（--test-isolation=none）
     npm run lint
     npm run typecheck

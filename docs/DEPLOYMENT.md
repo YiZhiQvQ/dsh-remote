@@ -7,8 +7,8 @@ every install or DSH upgrade.
 ## Install
 
 ```powershell
-& "C:\Users\<you>\AppData\Local\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" \
-    plugin --profile desktop add E:\documents\Project\dsh-remote
+& "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd" `
+    plugin --profile desktop add <path to this repo>
 ```
 
 ## Check 1 — the bundle is mounted
@@ -18,7 +18,7 @@ every install or DSH upgrade.
 
 ```json
 {
-  "dependencies": { "dsh-remote": "link:E:/documents/Project/dsh-remote" },
+  "dependencies": { "dsh-remote": "link:<path to this repo>" },
   "dsh": { "profile": { "bundles": [
     "@deepseek-ai/dsh-base",
     "@deepseek-ai/dsh-web-app",
@@ -70,7 +70,7 @@ desktop UI. If you see a DSH error page instead, the proxy forwarded without a
 ## Changing the password
 
 ```powershell
-E:\documents\Project\dsh-remote\scripts\set-remote-password.ps1
+<path to this repo>\scripts\set-remote-password.ps1
 ```
 
 Writes a scrypt salt/hash to `$DSH_HOME/dsh-remote-auth.json`. Restart DSH: the
