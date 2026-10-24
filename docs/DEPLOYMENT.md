@@ -11,9 +11,6 @@ every install or DSH upgrade.
     plugin --profile desktop add E:\documents\Project\dsh-remote
 ```
 
-Remove the multi-account plugin first if present — both want `0.0.0.0:3080` and
-both patch the same `webserver`/`web-runtime` rows.
-
 ## Check 1 — the bundle is mounted
 
 `%USERPROFILE%\.dsh\profiles\desktop\package.json` must list `dsh-remote` in

@@ -59,7 +59,7 @@ test('every runtime module stays small enough to navigate', async () => {
   assert.ok(files.length > 20, 'the runtime is expected to be split into focused modules')
 })
 
-test('no multi-account surface survives in the single-admin plugin', async () => {
+test('no account-isolation surface leaks into the single-admin runtime', async () => {
   const files = await listRuntimeFiles()
   const offenders = []
   for (const file of files) {

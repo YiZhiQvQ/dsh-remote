@@ -89,7 +89,7 @@ keep-alive + 快照            0.049 ms/req  20,299 req/s   (-99%)
 - `scripts/` 混放运行时库与改密脚本 → 运行时移到 `host/`，`scripts/` 只留工具。
 - `textResponse` ×3、`jsonResponse` ×2 → `host/http/respond.js`。
 - `buildPublicUrl` / `buildTrustedHosts` 死导出 → 删除；`checkPortProxy` 移入 `host/net/port-probe.js`。
-- `lan-proxy-lib` 内 **40 处**多账号残留 → 全部删除，契约测试兜底。
+- `lan-proxy-lib` 内 **40 处**不属于本插件的代码 → 全部删除，契约测试兜底。
 
 ### 1.6 前端
 

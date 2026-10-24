@@ -2,8 +2,8 @@
 #
 # This bundle is expected to sit after @deepseek-ai/dsh-web-app in
 # dsh.profile.bundles. It pins the desktop listener on loopback; the phone uses
-# the plugin's LAN pairing/proxy. Unlike the multi-account bundle, there are no
-# member accounts, child hosts, or workspace isolation.
+# the plugin's LAN pairing/proxy. There are no member accounts, child hosts, or
+# workspace isolation.
 #
 # Scope rule: this patch must not change how the local desktop behaves. Anything
 # that alters the desktop window's own UI belongs to the operator, not to a
