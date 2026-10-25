@@ -3,7 +3,7 @@
 All notable changes to `dsh-remote`. The plugin follows the DSH desktop
 runtime's minor line.
 
-## Unreleased
+## 0.3.1
 
 ### Fixed
 
