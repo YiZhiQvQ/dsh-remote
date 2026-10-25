@@ -5,6 +5,32 @@ runtime's minor line.
 
 ## Unreleased
 
+### Fixed
+
+- **鸿蒙平板上所有文件都无法预览（"文件资源服务不可用"）。** 根因是 ArkWeb 内核对
+  非标准 scheme 的 URL 解析与 WHATWG 标准不一致。
+
+  DSH 用 `new URL(address).hostname` 推导资源协议：
+
+  ```js
+  parsed = new URL(address)
+  if (parsed.protocol !== 'dsh-resource:') return undefined
+  return parsed.hostname === '' ? undefined : parsed.hostname.toLowerCase()
+  ```
+
+  在受影响的 ArkWeb 内核上，`new URL('dsh-resource://file/session/…')` 的
+  `hostname` 返回空串，于是 `protocolOf` 得到 `undefined`。资源注册表拿
+  `undefined` 去查 provider，永远查不到，直接把状态判为 `none`——**一个请求都
+  不会发出**。这解释了全部现象：所有文件类型失败、文件列表正常（走另一条路）、
+  网络日志里没有 `workspaceFiles/read`。
+
+  新增 `src/client/url-compat.js`，在 DSH 模块加载前修补 `URL`：只修复
+  "非特殊 scheme 且 hostname 为空"的情况，http/https/file/data 等特殊 scheme
+  完全交给原生实现。内核解析正常时不做任何替换。
+
+  修补后的对象是普通对象，**不挂在 `URL.prototype` 上**——那个原型的访问器
+  需要 URL 内部槽位，继承它会让每次读取属性都抛 `Illegal invocation`。
+
 ### Added
 
 - **Remote pages hide the host "open with" control.** The association launches on
